@@ -1,30 +1,30 @@
 version: "3"
 
 services:
-    nginx-proxy:
-        image: budry/jwilder-nginx-proxy-arm
-        restart: always
-        ports:
-            - "80:80"
-            - "443:443"
-        volumes:
-            - /var/run/docker.sock:/tmp/docker.sock:ro
-            - certs:/etc/nginx/certs:ro
-            - confd:/etc/nginx/conf.d
-            - vhostd:/etc/nginx/vhost.d
-            - html:/usr/share/nginx/html
-        labels:
-            - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+    # nginx-proxy:
+    #     image: budry/jwilder-nginx-proxy-arm
+    #     restart: always
+    #     ports:
+    #         - "80:80"
+    #         - "443:443"
+    #     volumes:
+    #         - /var/run/docker.sock:/tmp/docker.sock:ro
+    #         - certs:/etc/nginx/certs:ro
+    #         - confd:/etc/nginx/conf.d
+    #         - vhostd:/etc/nginx/vhost.d
+    #         - html:/usr/share/nginx/html
+    #     labels:
+    #         - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
 
-    letsencrypt:
-        image: jrcs/letsencrypt-nginx-proxy-companion:stable
-        restart: always
-        volumes:
-            - certs:/etc/nginx/certs:rw
-            - confd:/etc/nginx/conf.d
-            - vhostd:/etc/nginx/vhost.d
-            - html:/usr/share/nginx/html
-            - /var/run/docker.sock:/var/run/docker.sock:ro
+    # letsencrypt:
+    #     image: jrcs/letsencrypt-nginx-proxy-companion:stable
+    #     restart: always
+    #     volumes:
+    #         - certs:/etc/nginx/certs:rw
+    #         - confd:/etc/nginx/conf.d
+    #         - vhostd:/etc/nginx/vhost.d
+    #         - html:/usr/share/nginx/html
+    #         - /var/run/docker.sock:/var/run/docker.sock:ro
     mariadb:
         image: mariadb:latest
         environment:
@@ -38,18 +38,18 @@ services:
             DOLI_DB_USER: root
             DOLI_DB_PASSWORD: root
             DOLI_DB_NAME: dolibarr
-            # DOLI_URL_ROOT: 'https://erp.rsessa.com'
+            DOLI_URL_ROOT: 'http://erp.rsessa.com'
             PHP_INI_DATE_TIMEZONE: 'Europe/Paris'
-            VIRTUAL_HOST: 'erp.rsessa.com'
-            LETSENCRYPT_HOST: 'erp.rsessa.com'
-            LETSENCRYPT_EMAIL: 'rsessa1@gmail.com'
-        expose:
-            - "80"
+            # VIRTUAL_HOST: 'erp.rsessa.com'
+            # LETSENCRYPT_HOST: 'erp.rsessa.com'
+            # LETSENCRYPT_EMAIL: 'rsessa1@gmail.com'
+        ports:
+            - "80:80"
         links:
             - mariadb
 
-volumes:
-    certs:
-    html:
-    vhostd:
-    confd:
+# volumes:
+#     certs:
+#     html:
+#     vhostd:
+#     confd:
