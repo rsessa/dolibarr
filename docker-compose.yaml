@@ -34,7 +34,7 @@ services:
     restart: unless-stopped
     command: --character_set_client=utf8 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
-      - ./dolibarr_db:/var/lib/mysql
+      - ./docker-volumes/db/dolibarr_db:/var/lib/mysql
     environment:
       # - MYSQL_DATABASE=dolibarr
       # - MYSQL_USER=dolibarr
@@ -63,8 +63,8 @@ services:
       - LETSENCRYPT_HOST=${SSL.HOST}
       - LETSENCRYPT_EMAIL=${SSL.EMAIL}
     volumes:
-      - ./doli_html:/var/www/html
-      - ./doli_docs:/var/www/documents
+      - ./docker-volumes/dolibar/doli_html:/var/www/html
+      - ./docker-volumes/dolibar/doli_docs:/var/www/documents
 
 volumes:
   certs:
