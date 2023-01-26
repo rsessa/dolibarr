@@ -61,4 +61,9 @@ services:
       - ./doli_html:/var/www/html
       - ./doli_docs:/var/www/documents
 
+volumes:
+  certs:
+  html:
+  vhostd:
+  confd:
      
