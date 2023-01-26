@@ -35,10 +35,9 @@ services:
     volumes:
       - ./docker-volumes/db/dolibarr_db:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=dolibarr
-      - MYSQL_USER=dolibarr
-      - MYSQL_PASSWORD=dolibarr
-      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=dolibarrsessa
+      - MYSQL_USER=dolibarrsessa
+      - MYSQL_PASSWORD=dolibarrsessa
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
 
   dolibarr:
@@ -50,12 +49,12 @@ services:
     expose:
         - "80"
     environment:
-      - DOLI_ADMIN_LOGIN=admin
-      - DOLI_ADMIN_PASSWORD=p4ssw0rd
+      - DOLI_ADMIN_LOGIN=rsessa
+      - DOLI_ADMIN_PASSWORD=Paolas2282
       - DOLI_DB_HOST=mariadb
-      - DOLI_DB_NAME=dolibarr
-      - DOLI_DB_USER=dolibarr
-      - DOLI_DB_PASSWORD=dolibarr
+      - DOLI_DB_NAME=dolibarrsessa
+      - DOLI_DB_USER=dolibarrsessa
+      - DOLI_DB_PASSWORD=dolibarrsessa
       - TZ=Europe/Madrid 
       - LANG=es_ES
       - VIRTUAL_HOST=erp.rsessa.com
