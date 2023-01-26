@@ -48,8 +48,8 @@ services:
     restart: unless-stopped
     depends_on:
         - mariadb
-    ports:
-        - "8200:80"
+    expose:
+        - "80"
     environment:
       # - DOLI_ADMIN_LOGIN=admin
       # - DOLI_ADMIN_PASSWORD=p4ssw0rd
